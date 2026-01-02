@@ -21,25 +21,26 @@ export class AuthService {
 
     const payload = { sub: user._id, email: user.email, role: user.role };
 
+    // Tokens
     const accessToken = this.jwtService.sign(payload, { expiresIn: '15m' });
     const refreshToken = this.jwtService.sign(payload, { expiresIn: '7d' });
 
-    res.cookie('access_token', accessToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      maxAge: 15 * 60 * 1000,
-    });
-
+    // Store REFRESH TOKEN in HttpOnly cookie
     res.cookie('refresh_token', refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
+    // remove password before sending user object
     const { password: _, ...userWithoutPassword } = user.toObject();
-    return res.json({ user: userWithoutPassword });
+
+    // Send ACCESS TOKEN in response (frontend stores in memory)
+    return res.json({
+      user: userWithoutPassword,
+      accessToken,
+    });
   }
 
   async refresh(refreshToken: string, res: Response) {
@@ -53,14 +54,7 @@ export class AuthService {
         { expiresIn: '15m' },
       );
 
-      res.cookie('access_token', newAccessToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'strict',
-        maxAge: 15 * 60 * 1000,
-      });
-
-      return res.json({ success: true });
+      return res.json({ accessToken: newAccessToken });
     } catch {
       throw new UnauthorizedException('Invalid refresh token');
     }
