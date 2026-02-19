@@ -1,0 +1,263 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.pricing {
+  padding: $spacing-24 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba($color-purple-500, 0.16), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba($color-blue-500, 0.12), transparent 35%);
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-5;
+  font-size: $font-size-sm;
+  color: $color-purple-400;
+  background: rgba($color-purple-500, 0.14);
+  border: 1px solid rgba($color-purple-500, 0.3);
+}
+
+.title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-6;
+
+  @include md {
+    font-size: $font-size-6xl;
+  }
+}
+
+.titleGradient {
+  @include gradient-text-purple-blue;
+}
+
+.subtitle {
+  font-size: $font-size-xl;
+  color: $color-gray-400;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.planCard {
+  position: relative;
+  border-radius: $radius-2xl;
+  padding: $spacing-8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  backdrop-filter: blur(8px);
+  isolation: isolate;
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base,
+    border-color $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid transparent;
+    background: linear-gradient(
+        130deg,
+        rgba($color-white, 0.25),
+        rgba($color-white, 0.02) 35%,
+        transparent 55%
+      )
+      border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.45;
+  }
+
+  &.standard {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    &:hover {
+      border-color: rgba($color-purple-500, 0.45);
+      box-shadow: 0 20px 45px -28px rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  &.popular {
+    background: linear-gradient(
+      140deg,
+      rgba($color-purple-500, 0.16),
+      rgba($color-violet-500, 0.08)
+    );
+    border: 1px solid rgba($color-purple-500, 0.55);
+    box-shadow: 0 24px 52px -24px rgba($color-purple-500, 0.5);
+
+    &:hover {
+      box-shadow: 0 28px 56px -24px rgba($color-purple-500, 0.62);
+    }
+  }
+
+  @include lg {
+    &.popular {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+.popularBadge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: $spacing-1 $spacing-4;
+  @include gradient-purple-blue;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+  box-shadow: 0 10px 24px -14px rgba($color-purple-500, 0.95);
+
+  svg {
+    width: 12px;
+    height: 12px;
+    color: $color-white;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+  }
+}
+
+.planName {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-2;
+}
+
+.planHeader {
+  margin-bottom: $spacing-6;
+}
+
+.planDescription {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+  min-height: 2.5rem;
+}
+
+.planPrice {
+  margin-bottom: $spacing-8;
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-2;
+
+  .price {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+
+    .currency {
+      font-size: $font-size-2xl;
+      vertical-align: super;
+    }
+  }
+
+  .period {
+    font-size: $font-size-base;
+    color: $color-gray-400;
+  }
+}
+
+.planCta {
+  @include button-base;
+  width: 100%;
+  padding: $spacing-3;
+  margin-bottom: $spacing-8;
+  font-weight: $font-weight-semibold;
+
+  &.standard {
+    background: rgba(255, 255, 255, 0.1);
+    color: $color-white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &.popular {
+    @include gradient-purple-blue;
+    color: $color-white;
+
+    &:hover {
+      box-shadow: $shadow-purple-lg;
+    }
+  }
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  margin-top: auto;
+  padding-top: $spacing-1;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    font-size: $font-size-sm;
+    color: $color-gray-300;
+    line-height: $line-height-normal;
+    padding: $spacing-2 0;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $color-purple-500;
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+  }
+}

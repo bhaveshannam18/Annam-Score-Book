@@ -1,0 +1,210 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.productShowcase {
+  padding: $spacing-24 0;
+  position: relative;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+}
+
+.title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-6;
+
+  @include md {
+    font-size: $font-size-6xl;
+  }
+}
+
+.titleGradient {
+  @include gradient-text-purple-blue;
+}
+
+.subtitle {
+  font-size: $font-size-xl;
+  color: $color-gray-400;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.mockupWrapper {
+  @include card;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: $shadow-2xl;
+  overflow: hidden;
+  padding: 0;
+}
+
+.mockup {
+  background: $bg-secondary;
+  min-height: 600px;
+  display: flex;
+  min-width: 0;
+  border-radius: $radius-xl;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 256px;
+  background: #0a0e1a;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: $spacing-4;
+  display: none;
+}
+
+.logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  @include gradient-text-purple-blue;
+  margin-bottom: $spacing-8;
+  padding: 0 $spacing-2;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.navItem {
+  padding: $spacing-2 $spacing-3;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+  background: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+  color: $color-gray-400;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: $color-gray-300;
+  }
+
+  &.active {
+    background: rgba($color-purple-500, 0.1);
+    border: 1px solid rgba($color-purple-500, 0.2);
+    color: $color-purple-400;
+  }
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  padding: $spacing-8;
+  overflow-y: auto;
+  @include hide-scrollbar;
+}
+
+.contentHeader {
+  margin-bottom: $spacing-8;
+
+  h3 {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-2;
+  }
+
+  p {
+    color: $color-gray-400;
+  }
+}
+
+.matchesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.matchCard {
+  @include card;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+.matchCardHeader {
+  @include flex-between;
+  margin-bottom: $spacing-4;
+}
+
+.matchType {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+}
+
+.statusBadge {
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border: 1px solid;
+
+  &.live {
+    background: rgba($color-purple-500, 0.2);
+    border-color: rgba($color-purple-500, 0.3);
+    color: $color-purple-400;
+  }
+
+  &.completed {
+    background: rgba($color-gray-500, 0.2);
+    border-color: rgba($color-gray-500, 0.3);
+    color: $color-gray-400;
+  }
+}
+
+.matchTeams {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.teamRow {
+  @include flex-between;
+}
+
+.teamName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+}
+
+.teamScore {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+}
+
+.matchResult {
+  margin-top: $spacing-4;
+  padding-top: $spacing-4;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: $font-size-sm;
+  color: $color-purple-400;
+  font-weight: $font-weight-medium;
+}

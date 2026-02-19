@@ -1,26 +1,105 @@
-@import "tailwindcss";
-
+/*
+  Global theme tokens.
+  These are shared across the app so changing colors/fonts here updates everything consistently.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0e1a;
+  --foreground: #ffffff;
+  --font-sans: var(--font-montserrat);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+  Small CSS reset:
+  - predictable box sizing
+  - removes default browser spacing that can cause random layout gaps
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Base document settings for better readability and smooth scrolling.
+*/
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
+/*
+  App-wide body defaults:
+  background, text color, font stack, and minimum full-screen height.
+*/
 body {
+  margin: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+}
+
+/*
+  Remove default heading/paragraph spacing so section components control spacing explicitly.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+/*
+  Links inherit surrounding text color by default to match each section/theme.
+*/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+  Keep buttons visually consistent with surrounding text styles.
+*/
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/*
+  Responsive image behavior by default.
+*/
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+  Remove native bullet/number styles so custom list UI can be applied where needed.
+*/
+ul,
+ol {
+  list-style: none;
+}
+
+/*
+  Subtle brand-colored text highlight when user selects text.
+*/
+::selection {
+  background-color: rgba(168, 85, 247, 0.3);
+  color: #ffffff;
 }

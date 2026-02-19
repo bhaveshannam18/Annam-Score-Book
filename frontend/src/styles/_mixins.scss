@@ -1,0 +1,238 @@
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+// Gradients
+@mixin gradient-purple-blue {
+  background: linear-gradient(135deg, $color-purple-600 0%, $color-blue-600 100%);
+}
+
+@mixin gradient-purple-violet {
+  background: linear-gradient(135deg, $color-purple-500 0%, $color-violet-500 100%);
+}
+
+@mixin gradient-blue-cyan {
+  background: linear-gradient(135deg, $color-blue-600 0%, $color-cyan-500 100%);
+}
+
+@mixin gradient-violet-fuchsia {
+  background: linear-gradient(135deg, $color-violet-500 0%, $color-fuchsia-500 100%);
+}
+
+@mixin gradient-indigo-purple {
+  background: linear-gradient(135deg, $color-indigo-600 0%, $color-purple-600 100%);
+}
+
+@mixin gradient-text-purple-blue {
+  background: linear-gradient(90deg, $color-purple-500 0%, $color-violet-500 50%, $color-blue-500 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-6;
+  padding-right: $spacing-6;
+}
+
+// Button base
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4 $spacing-8;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: none;
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid $color-purple-500;
+    outline-offset: 2px;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  @include gradient-purple-blue;
+  color: $color-white;
+  
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $shadow-purple-lg;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: rgba(255, 255, 255, 0.05);
+  color: $color-white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Card styles
+@mixin card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $radius-xl;
+  padding: $spacing-8;
+  transition: all $transition-base;
+}
+
+@mixin card-hover {
+  &:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Glass effect
+@mixin glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Gradient border
+@mixin gradient-border($width: 1px) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: $width;
+    background: linear-gradient(135deg, $color-purple-500, $color-blue-500);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Text utilities
+@mixin text-gradient {
+  @include gradient-text-purple-blue;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Hide scrollbar
+@mixin hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

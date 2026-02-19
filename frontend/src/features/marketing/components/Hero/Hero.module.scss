@@ -1,0 +1,356 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: $spacing-32;
+  padding-bottom: $spacing-20;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.backgroundGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba($color-purple-500, 0.1) 0%,
+    transparent 50%,
+    rgba($color-blue-600, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  text-align: center;
+  max-width: 64rem;
+  margin: 0 auto $spacing-16;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: $spacing-6;
+  padding: $spacing-2 $spacing-4;
+  background: rgba($color-purple-500, 0.1);
+  border: 1px solid rgba($color-purple-500, 0.2);
+  border-radius: $radius-full;
+
+  span {
+    color: $color-purple-400;
+    font-size: $font-size-sm;
+    letter-spacing: 0.05em;
+  }
+}
+
+.title {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-6;
+  line-height: $line-height-tight;
+
+  @include md {
+    font-size: $font-size-7xl;
+  }
+
+  @include lg {
+    font-size: $font-size-8xl;
+  }
+}
+
+.titleGradient {
+  @include gradient-text-purple-blue;
+}
+
+.subtitle {
+  font-size: $font-size-xl;
+  color: $color-gray-400;
+  margin-bottom: $spacing-10;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: $line-height-relaxed;
+
+  @include md {
+    font-size: $font-size-2xl;
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  justify-content: center;
+  align-items: center;
+
+  @include sm {
+    flex-direction: row;
+  }
+}
+
+.primaryBtn {
+  @include button-primary;
+  font-size: $font-size-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.secondaryBtn {
+  @include button-secondary;
+  font-size: $font-size-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.iconMd {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.dashboardPreview {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0a0e1a, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dashboardCard {
+  @include card;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: $shadow-2xl;
+
+  &:hover {
+    box-shadow: 0 30px 60px -10px rgba($color-purple-500, 0.3);
+  }
+}
+
+.dashboardShell {
+  background: #0f1420;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.browserChrome {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.browserDots {
+  display: flex;
+  gap: $spacing-2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-full;
+}
+
+.dotRed {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.dotYellow {
+  background: rgba(234, 179, 8, 0.8);
+}
+
+.dotGreen {
+  background: rgba(34, 197, 94, 0.8);
+}
+
+.browserAddressWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.browserAddress {
+  padding: $spacing-1 $spacing-4;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  color: $color-gray-500;
+}
+
+.dashboardContent {
+  padding: $spacing-8;
+  min-height: 500px;
+  background: linear-gradient(135deg, $bg-secondary 0%, #0a0e1a 100%);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+  margin-bottom: $spacing-6;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.statCard {
+  padding: $spacing-6;
+  border-radius: $radius-lg;
+  border: 1px solid;
+
+  &.purple {
+    background: linear-gradient(
+      135deg,
+      rgba($color-purple-500, 0.1),
+      rgba($color-violet-500, 0.05)
+    );
+    border-color: rgba($color-purple-500, 0.2);
+  }
+
+  &.blue {
+    background: linear-gradient(135deg, rgba($color-blue-500, 0.1), rgba($color-cyan-500, 0.05));
+    border-color: rgba($color-blue-500, 0.2);
+  }
+
+  &.violet {
+    background: linear-gradient(
+      135deg,
+      rgba($color-violet-500, 0.1),
+      rgba($color-fuchsia-500, 0.05)
+    );
+    border-color: rgba($color-violet-500, 0.2);
+  }
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-2;
+
+  &.purple {
+    color: $color-purple-400;
+  }
+  &.blue {
+    color: $color-blue-400;
+  }
+  &.violet {
+    color: $color-violet-400;
+  }
+}
+
+.statValue {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin-bottom: $spacing-1;
+}
+
+.statChange {
+  font-size: $font-size-xs;
+  color: $color-gray-400;
+}
+
+.matchCard {
+  @include card;
+  padding: $spacing-6;
+}
+
+.matchHeader {
+  @include flex-between;
+  margin-bottom: $spacing-4;
+}
+
+.matchLabel {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+}
+
+.liveBadge {
+  padding: $spacing-1 $spacing-3;
+  background: rgba($color-purple-500, 0.2);
+  border: 1px solid rgba($color-purple-500, 0.3);
+  border-radius: $radius-full;
+  color: $color-purple-400;
+  font-size: $font-size-xs;
+}
+
+.matchTeams {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.teamRow {
+  @include flex-between;
+  padding-bottom: $spacing-4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.teamName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+}
+
+.teamScore {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+}
+
+.overs {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+}
+
+.runRate {
+  font-size: $font-size-xs;
+  color: $color-gray-400;
+}
+
+.teamDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.teamRowMuted {
+  opacity: 0.6;
+}
+
+.yetToBat {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+}
+
+.currentInnings {
+  margin-top: $spacing-4;
+  padding: $spacing-4;
+  background: rgba($color-purple-500, 0.05);
+  border-radius: $radius-md;
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-gray-400;
+    margin-bottom: $spacing-2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

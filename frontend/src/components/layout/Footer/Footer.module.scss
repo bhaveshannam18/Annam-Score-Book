@@ -1,0 +1,132 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  padding: $spacing-20 0 $spacing-10;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: $bg-secondary;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+  margin-bottom: $spacing-12;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include md {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.brandColumn {
+  grid-column: span 2;
+
+  @include sm {
+    grid-column: span 1;
+  }
+}
+
+.logo {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  @include gradient-text-purple-blue;
+  margin-bottom: $spacing-4;
+}
+
+.description {
+  color: $color-gray-400;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-6;
+}
+
+.socialLinks {
+  display: flex;
+  gap: $spacing-3;
+
+  a {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.05);
+    @include flex-center;
+    transition: all $transition-fast;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $color-gray-400;
+    }
+
+    &:hover {
+      background: rgba($color-purple-500, 0.2);
+
+      svg {
+        color: $color-purple-400;
+      }
+    }
+  }
+}
+
+.linkColumn {
+  h4 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-4;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+
+    li a {
+      font-size: $font-size-sm;
+      color: $color-gray-400;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-purple-400;
+      }
+    }
+  }
+}
+
+.bottom {
+  padding-top: $spacing-8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  @include flex-between;
+  flex-direction: column;
+  gap: $spacing-4;
+
+  @include md {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  font-size: $font-size-sm;
+  color: $color-gray-400;
+}
+
+.legalLinks {
+  display: flex;
+  gap: $spacing-6;
+
+  a {
+    font-size: $font-size-sm;
+    color: $color-gray-400;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-purple-400;
+    }
+  }
+}

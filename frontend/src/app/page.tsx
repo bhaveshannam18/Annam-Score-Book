@@ -1,7 +1,30 @@
+import { Navigation, Footer } from '@/components/layout';
+import {
+  Hero,
+  Features,
+  ProductShowcase,
+  HowItWorks,
+  Analytics,
+  SocialProof,
+  Pricing,
+  FinalCTA,
+} from '@/features/marketing/components';
+
 export default function Home() {
   return (
-    <div className="bg-teal-300 p-2">
-      <h1 className="">Hello Bhavesh Annam!!</h1>
+    <div>
+      <Navigation />
+      <main>
+        <Hero />
+        <Features />
+        <ProductShowcase />
+        <HowItWorks />
+        <Analytics />
+        <SocialProof />
+        {/* <Pricing /> */}
+        <FinalCTA />
+      </main>
+      <Footer />
     </div>
   );
 }

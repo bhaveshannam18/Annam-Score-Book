@@ -1,0 +1,145 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+  backdrop-filter: blur(12px);
+  background-color: rgba($bg-primary, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  @include container;
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+}
+
+.inner {
+  @include flex-between;
+}
+
+.logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  @include gradient-text-purple-blue;
+}
+
+.desktopNav {
+  display: none;
+  gap: $spacing-8;
+
+  @include md {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: $color-gray-300;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-purple-400;
+    }
+  }
+}
+
+.ctaButtons {
+  display: none;
+  gap: $spacing-4;
+
+  @include md {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.signInBtn {
+  padding: $spacing-2 $spacing-4;
+  background: transparent;
+  color: $color-gray-300;
+  border: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.getStartedBtn {
+  @include button-primary;
+  padding: $spacing-2 $spacing-6;
+  font-size: $font-size-base;
+}
+
+.mobileMenuBtn {
+  display: block;
+  padding: $spacing-2;
+  background: transparent;
+  color: $color-gray-300;
+  border: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.menuIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobileMenu {
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-2;
+
+  @include md {
+    display: none;
+  }
+
+  a {
+    display: block;
+    padding: $spacing-2 0;
+    color: $color-gray-300;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-purple-400;
+    }
+  }
+}
+
+.mobileCtaButtons {
+  padding-top: $spacing-4;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  button:first-child {
+    width: 100%;
+    padding: $spacing-2;
+    background: transparent;
+    color: $color-gray-300;
+    border: none;
+    text-align: left;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  button:last-child {
+    @include button-primary;
+    width: 100%;
+    padding: $spacing-2;
+  }
+}
