@@ -100,6 +100,8 @@
 .mobileMenu {
   padding-top: $spacing-4;
   padding-bottom: $spacing-2;
+  margin-top: $spacing-2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 
   @include md {
     display: none;
@@ -118,28 +120,35 @@
 }
 
 .mobileCtaButtons {
-  padding-top: $spacing-4;
+  padding-top: $spacing-5;
   display: flex;
   flex-direction: column;
   gap: $spacing-3;
+  width: 100%;
+}
 
-  button:first-child {
-    width: 100%;
-    padding: $spacing-2;
-    background: transparent;
-    color: $color-gray-300;
-    border: none;
-    text-align: left;
-    transition: color $transition-fast;
+.mobileSignInBtn {
+  width: 100%;
+  min-height: 44px;
+  padding: $spacing-3 $spacing-4;
+  background: rgba(255, 255, 255, 0.03);
+  color: $color-gray-200;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-lg;
+  text-align: center;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
 
-    &:hover {
-      color: $color-white;
-    }
+  &:hover {
+    color: $color-white;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
   }
+}
 
-  button:last-child {
-    @include button-primary;
-    width: 100%;
-    padding: $spacing-2;
-  }
+.mobileGetStartedBtn {
+  @include button-primary;
+  width: 100%;
+  min-height: 44px;
+  padding: $spacing-3 $spacing-4;
 }
