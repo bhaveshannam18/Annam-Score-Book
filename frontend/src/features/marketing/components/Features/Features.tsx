@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
 import { Radio, Trophy, BarChart3, Globe, FileText, TrendingUp } from 'lucide-react';
@@ -8,7 +8,8 @@ const features = [
   {
     icon: Radio,
     title: 'Live Scoring',
-    description: 'Ball-by-ball scoring with real-time updates and commentary for seamless match tracking.',
+    description:
+      'Ball-by-ball scoring with real-time updates and commentary for seamless match tracking.',
     gradientClass: 'gradientPurpleViolet',
   },
   {
@@ -57,15 +58,13 @@ export function Features() {
           <h2 className={styles.title}>
             Everything you need to
             <br />
-            <span className={styles.titleGradient}>
-              score like a pro
-            </span>
+            <span className={styles.titleGradient}>score like a pro</span>
           </h2>
           <p className={styles.subtitle}>
             A complete platform built for modern cricket scoring with professional-grade features.
           </p>
         </motion.div>
-        
+
         <div className={styles.grid}>
           {features.map((feature, index) => (
             <motion.div
@@ -74,13 +73,13 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8 }}
             >
               <div className={styles.featureCard}>
                 <div className={`${styles.iconWrapper} ${styles[feature.gradientClass]}`}>
                   <feature.icon />
                 </div>
-                
+
                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                 <p className={styles.featureDescription}>{feature.description}</p>
               </div>

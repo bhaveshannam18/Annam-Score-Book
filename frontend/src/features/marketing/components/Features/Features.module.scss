@@ -55,7 +55,6 @@
   transition: all $transition-base;
 
   &:hover {
-    transform: translateY(-8px);
     box-shadow: $shadow-xl;
   }
 }

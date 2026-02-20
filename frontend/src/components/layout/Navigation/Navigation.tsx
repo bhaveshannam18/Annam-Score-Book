@@ -59,8 +59,14 @@ export function Navigation() {
             <a href="#pricing">Pricing</a>
             <a href="#testimonials">Testimonials</a>
             <div className={styles.mobileCtaButtons}>
-              <button>Sign In</button>
-              <button>Get Started</button>
+              <button className={styles.mobileSignInBtn}>Sign In</button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={styles.mobileGetStartedBtn}
+              >
+                Get Started
+              </motion.button>
             </div>
           </motion.div>
         )}
