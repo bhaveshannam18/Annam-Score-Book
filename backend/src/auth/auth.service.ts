@@ -19,7 +19,12 @@ export class AuthService {
     if (!isPasswordValid)
       throw new UnauthorizedException('Invalid credentials');
 
-    const payload = { sub: user._id, email: user.email, role: user.role };
+    const payload = {
+      sub: user._id,
+      email: user.email,
+      role: user.role,
+      plan: user.plan,
+    };
 
     // Tokens
     const accessToken = this.jwtService.sign(payload, { expiresIn: '15m' });
@@ -50,7 +55,12 @@ export class AuthService {
       if (!user) throw new UnauthorizedException();
 
       const newAccessToken = this.jwtService.sign(
-        { sub: user._id, email: user.email, role: user.role },
+        {
+          sub: user._id,
+          email: user.email,
+          role: user.role,
+          plan: user.plan,
+        },
         { expiresIn: '15m' },
       );
 
