@@ -64,7 +64,6 @@
 
 .stepCard {
   text-align: center;
-  position: relative;
 }
 
 .iconContainer {
@@ -80,8 +79,6 @@
   background: linear-gradient(135deg, rgba($color-purple-500, 0.2), rgba($color-violet-500, 0.2));
   border: 1px solid rgba($color-purple-500, 0.3);
   @include flex-center;
-  position: relative;
-  z-index: 10;
 
   svg {
     width: 32px;

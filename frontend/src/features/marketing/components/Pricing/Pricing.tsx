@@ -79,7 +79,7 @@ export function Pricing() {
   };
 
   return (
-    <section className={styles.pricing}>
+    <section id="pricing" className={styles.pricing}>
       <div className={styles.backgroundGlow} aria-hidden="true" />
       <div className={styles.container}>
         <motion.div

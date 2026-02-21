@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
@@ -7,6 +8,15 @@ import styles from './Navigation.module.scss';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsOpen(false); // Close mobile menu after clicking
+    }
+  };
 
   return (
     <nav className={styles.navigation}>
@@ -23,15 +33,25 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className={styles.desktopNav}>
-            <a href="#features">Features</a>
-            <a href="#analytics">Analytics</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#testimonials">Testimonials</a>
+            <a href="#features" onClick={(e) => handleNavClick(e, 'features')}>
+              Features
+            </a>
+            <a href="#analytics" onClick={(e) => handleNavClick(e, 'analytics')}>
+              Analytics
+            </a>
+            <a href="#pricing" onClick={(e) => handleNavClick(e, 'pricing')}>
+              Pricing
+            </a>
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')}>
+              Testimonials
+            </a>
           </div>
 
           {/* CTA Buttons */}
           <div className={styles.ctaButtons}>
-            <button className={styles.signInBtn}>Sign In</button>
+            <Link href="/login" className={styles.signInBtn}>
+              Sign In
+            </Link>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -54,12 +74,22 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             className={styles.mobileMenu}
           >
-            <a href="#features">Features</a>
-            <a href="#analytics">Analytics</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#testimonials">Testimonials</a>
+            <a href="#features" onClick={(e) => handleNavClick(e, 'features')}>
+              Features
+            </a>
+            <a href="#analytics" onClick={(e) => handleNavClick(e, 'analytics')}>
+              Analytics
+            </a>
+            <a href="#pricing" onClick={(e) => handleNavClick(e, 'pricing')}>
+              Pricing
+            </a>
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')}>
+              Testimonials
+            </a>
             <div className={styles.mobileCtaButtons}>
-              <button className={styles.mobileSignInBtn}>Sign In</button>
+              <Link href="/login" className={styles.mobileSignInBtn}>
+                Sign In
+              </Link>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
