@@ -92,7 +92,7 @@ function ChartContainer({ children }: { children: ReactNode }) {
 
 export function Analytics() {
   return (
-    <section className={styles.analytics}>
+    <section id="analytics" className={styles.analytics}>
       <div className={styles.container}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

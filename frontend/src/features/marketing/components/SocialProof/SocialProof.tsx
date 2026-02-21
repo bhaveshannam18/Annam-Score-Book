@@ -37,7 +37,7 @@ const testimonials = [
 
 export function SocialProof() {
   return (
-    <section className={styles.socialProof}>
+    <section id="testimonials" className={styles.socialProof}>
       <div className={styles.container}>
         {/* Metrics */}
         <div className={styles.metricsGrid}>
