@@ -1,4 +1,4 @@
-import { Navigation, Footer } from '@/components/layout';
+import { Navigation, Footer } from '@/components/LandingPage';
 import {
   Hero,
   Features,
@@ -6,7 +6,6 @@ import {
   HowItWorks,
   Analytics,
   SocialProof,
-  Pricing,
   FinalCTA,
 } from '@/features/marketing/components';
 

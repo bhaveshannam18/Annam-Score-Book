@@ -1,0 +1,130 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 14, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: $z-index-modal-backdrop;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.sidebar {
+  width: 270px;
+  background: rgba(10, 14, 26, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: $spacing-6;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+}
+
+.sidebarDesktop {
+  display: none;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+
+  @include lg {
+    display: flex;
+  }
+}
+
+.sidebarMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: $z-index-modal;
+  transform: translateX(-100%);
+  transition: transform $transition-base;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  @include gradient-text-purple-blue;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.navItem {
+  border: none;
+  width: 100%;
+  background: transparent;
+  color: $color-gray-400;
+  border-radius: $radius-lg;
+  padding: $spacing-3 $spacing-4;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  text-align: left;
+  font-size: $font-size-sm;
+  transition: all $transition-fast;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: $color-gray-300;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.active {
+  color: $color-purple-400;
+  background: rgba($color-purple-500, 0.14);
+  border: 1px solid rgba($color-purple-500, 0.25);
+}
+
+.lockIcon {
+  margin-left: auto;
+  color: $color-gray-500;
+}
+
+.upgradeCard {
+  @include card;
+  padding: $spacing-5;
+  margin-top: auto;
+
+  p {
+    color: $color-gray-400;
+    font-size: $font-size-sm;
+    margin: $spacing-3 0 $spacing-4;
+  }
+
+  button {
+    @include button-primary;
+    width: 100%;
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-sm;
+  }
+}
+
+.upgradeTitleRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  color: $color-white;
+  font-weight: $font-weight-semibold;
+}

@@ -1,0 +1,106 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  backdrop-filter: blur(12px);
+  background-color: rgba($bg-primary, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+  padding: $spacing-3 $spacing-4;
+
+  @include md {
+    padding: $spacing-3 $spacing-6;
+  }
+
+  @include lg {
+    padding: $spacing-3 $spacing-8;
+  }
+
+  h1 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+
+    @include md {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  p {
+    color: $color-gray-400;
+    margin-top: $spacing-1;
+  }
+}
+
+.topTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+}
+
+.menuBtn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: $radius-full;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+}
+
+.searchBtn {
+  @include button-secondary;
+  min-width: 8rem;
+  justify-content: flex-start;
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-sm;
+  gap: $spacing-2;
+
+  @include md {
+    min-width: 10rem;
+  }
+}
+
+.iconBtn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: $radius-full;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileMini {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: $radius-full;
+  border: 1px solid rgba($color-purple-500, 0.45);
+  @include gradient-purple-blue;
+  color: $color-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-purple;
+}
