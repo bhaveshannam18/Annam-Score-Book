@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion, type Variants } from 'framer-motion';
 import { Check, Sparkles } from 'lucide-react';
 import styles from './Pricing.module.scss';
 
@@ -56,7 +57,7 @@ const plans = [
 ];
 
 export function Pricing() {
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: (index: number) => ({
       opacity: 1,
@@ -64,12 +65,12 @@ export function Pricing() {
       transition: {
         delay: index * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
       },
     }),
   };
 
-  const featureVariants = {
+  const featureVariants: Variants = {
     hidden: { opacity: 0, x: -8 },
     visible: (index: number) => ({
       opacity: 1,
@@ -136,13 +137,24 @@ export function Pricing() {
                 {plan.period && <span className={styles.period}>{plan.period}</span>}
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`${styles.planCta} ${plan.popular ? styles.popular : styles.standard}`}
-              >
-                {plan.cta}
-              </motion.button>
+              {plan.cta === 'Contact Sales' ? (
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${styles.planCta} ${plan.popular ? styles.popular : styles.standard}`}
+                >
+                  {plan.cta}
+                </motion.button>
+              ) : (
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Link
+                    href="/signup"
+                    className={`${styles.planCta} ${plan.popular ? styles.popular : styles.standard}`}
+                  >
+                    {plan.cta}
+                  </Link>
+                </motion.div>
+              )}
 
               <ul className={styles.featuresList}>
                 {plan.features.map((feature, featureIndex) => (

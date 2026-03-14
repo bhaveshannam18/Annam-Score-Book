@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
 import { Plus, Radio, BarChart3 } from 'lucide-react';
@@ -9,13 +9,15 @@ const steps = [
     number: '1',
     icon: Plus,
     title: 'Create Match',
-    description: 'Set up your match details, teams, and players in seconds with our intuitive interface.',
+    description:
+      'Set up your match details, teams, and players in seconds with our intuitive interface.',
   },
   {
     number: '2',
     icon: Radio,
     title: 'Live Scoring',
-    description: 'Score ball-by-ball in real-time with our streamlined scoring interface designed for speed.',
+    description:
+      'Score ball-by-ball in real-time with our streamlined scoring interface designed for speed.',
   },
   {
     number: '3',
@@ -39,19 +41,18 @@ export function HowItWorks() {
           <h2 className={styles.title}>
             Simple workflow,
             <br />
-            <span className={styles.titleGradient}>
-              powerful results
-            </span>
+            <span className={styles.titleGradient}>powerful results</span>
           </h2>
           <p className={styles.subtitle}>
-            From match creation to final analysis, our three-step process makes professional scoring accessible to everyone.
+            From match creation to final analysis, our three-step process makes professional scoring
+            accessible to everyone.
           </p>
         </motion.div>
-        
+
         <div className={styles.stepsGrid}>
           {/* Connection lines for desktop */}
           <div className={styles.connectionLine} />
-          
+
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
@@ -67,7 +68,7 @@ export function HowItWorks() {
                 </div>
                 <div className={styles.stepNumber}>{step.number}</div>
               </div>
-              
+
               <h3 className={styles.stepTitle}>{step.title}</h3>
               <p className={styles.stepDescription}>{step.description}</p>
             </motion.div>

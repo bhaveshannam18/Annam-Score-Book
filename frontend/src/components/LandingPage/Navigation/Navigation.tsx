@@ -52,13 +52,11 @@ export function Navigation() {
             <Link href="/login" className={styles.signInBtn}>
               Sign In
             </Link>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={styles.getStartedBtn}
-            >
-              Get Started
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/signup" className={styles.getStartedBtn}>
+                Get Started
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -90,13 +88,11 @@ export function Navigation() {
               <Link href="/login" className={styles.mobileSignInBtn}>
                 Sign In
               </Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={styles.mobileGetStartedBtn}
-              >
-                Get Started
-              </motion.button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/signup" className={styles.mobileGetStartedBtn}>
+                  Get Started
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
