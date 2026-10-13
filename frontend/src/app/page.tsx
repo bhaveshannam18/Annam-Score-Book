@@ -1,5 +1,6 @@
-import { Navigation, Footer } from '@/components/LandingPage';
 import {
+  Navigation,
+  Footer,
   Hero,
   Features,
   ProductShowcase,
@@ -7,7 +8,7 @@ import {
   Analytics,
   SocialProof,
   FinalCTA,
-} from '@/features/marketing/components';
+} from '@/components/landingpage';
 
 export default function Home() {
   return (
